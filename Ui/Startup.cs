@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Domain;
+using FakeDataStore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventSource
+namespace Ui
 {
     public class Startup
     {
@@ -19,6 +21,9 @@ namespace EventSource
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton<IStreamStore, FakeStreamStore>();
+            services.AddTransient<Streams>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
