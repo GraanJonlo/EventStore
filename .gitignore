@@ -1,0 +1,8 @@
+bin/
+obj/
+
+.vs/
+.vscode/
+
+*.ncrunch*
+_NCrunch_*/
